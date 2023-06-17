@@ -1,3 +1,4 @@
+import { LegacyRef } from "react";
 import styled, { css } from "styled-components";
 
 const getSizeStyles = (size: 's'|'m'|'l') => {
@@ -26,8 +27,9 @@ const getSizeStyles = (size: 's'|'m'|'l') => {
   };
 
   interface StyledInputProps {
-    inputSize?: 's'|'m'|'l';
+    inputsize?: 's'|'m'|'l';
     disabled?: boolean;
+    ref?:LegacyRef<HTMLInputElement>
   }
 
   export const Wrapper = styled.div`
@@ -42,5 +44,5 @@ export const TextInput = styled.input<StyledInputProps>`
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-  ${({ inputSize }) => getSizeStyles(inputSize || 'm')}
+  ${({ inputsize }) => getSizeStyles(inputsize || 'm')}
 `

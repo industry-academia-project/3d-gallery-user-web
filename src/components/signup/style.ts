@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 export const SignUpForm = styled.form`
-    margin: 0 auto;
-    width:200px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+    height:300px;
+    > p{
+        color:red
+    }
 `
+
+export const EmailBox = styled.div`
+    display:flex;
+` 

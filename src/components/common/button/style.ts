@@ -1,9 +1,25 @@
 import styled, { css } from "styled-components";
 
-export const Button = styled.button<{variant:string,disabled:boolean}>`
+interface StyleProps {
+  size:string
+  variant:string
+  disabled:boolean
+}
+
+export const Button = styled.button<StyleProps>`
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: ${({ size }) => {
+    if (size === 's') return '0px 10px';
+    if (size === 'm') return '12px 24px';
+    if (size === 'l') return '16px 32px';
+    return '12px 24px';
+  }};
+  font-size: ${({ size }) => {
+    if (size === 's') return '12px';
+    if (size === 'm') return '16px';
+    if (size === 'l') return '18px';
+    return '16px';
+  }};
   font-weight: 500;
   text-align: center;
   text-decoration: none;

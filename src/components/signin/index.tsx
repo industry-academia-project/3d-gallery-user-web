@@ -2,6 +2,8 @@ import customAxios from "@/lib/customAxios";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { SignInForm } from "./style";
+import TextInput from "../common/input/textInput";
+import Button from "../common/button";
 
 interface IFormValues {
   email: string;
@@ -15,26 +17,37 @@ const SignIn = () => {
     getValues,
     formState: { errors },
   } = useForm<IFormValues>({});
-
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     const { email, password } = data;
     customAxios.post("user/login", { email, password });
   };
+  const email =register('email',{required:true})
+  const password = register('password',{required:true})
 
   return (
+
     <SignInForm onSubmit={handleSubmit(onSubmit)}>
-      <input
-        {...register("email", { required: true })}
+      <TextInput
+        label="이메일"
+        name={email.name}
+        onChange={email.onChange}
+        onBlur={email.onBlur}
+        ref={email.ref}
         type="text"
+        size="l"
         placeholder="이메일을 입력해주세요"
       />
-      <button>인증하기</button>
-      <input
-        {...register("password", { required: true })}
+      <TextInput
+        name={password.name}
+        onChange={password.onChange}
+        onBlur={password.onBlur}
+        ref={password.ref}
+        label="비밀번호"
         type="text"
+        size="l"
         placeholder="비밀번호를 입력하세요"
       />
-      <button type={"submit"}>가입하기</button>
+      <Button type={"submit"}>로그인</Button>
     </SignInForm>
   );
 };

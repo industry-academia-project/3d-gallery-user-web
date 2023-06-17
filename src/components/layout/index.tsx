@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Navbar from "../common/navbar";
 
 type layoutPorps = {
   children: ReactNode;
@@ -6,6 +7,7 @@ type layoutPorps = {
 export default function Layout({ children }: layoutPorps) {
   return (
     <>
+      <Navbar/>
       <main>{children}</main>
     </>
   );
